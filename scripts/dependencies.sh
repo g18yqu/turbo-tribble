@@ -34,6 +34,7 @@ terragrunt() {
     tmp_dir=$(mktemp -d)
     pushd "$tmp_dir" || exit 1
     wget "https://github.com/gruntwork-io/terragrunt/releases/download/$VERSION/terragrunt_linux_amd64"
+    chmod +x terragrunt_linux_amd64
     cp terragrunt_linux_amd64 "$BIN_DIR"/terragrunt
     popd || exit 1
 
@@ -69,6 +70,9 @@ main() {
     if ! test -f "$BIN_DIR"/terraform; then
         echo "terraform not installed, installing..."
         terraform
+    fi
+    if ! test -d venv; then
+        python3 -m venv venv
     fi
 }
 

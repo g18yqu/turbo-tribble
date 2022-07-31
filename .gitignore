@@ -1,1 +1,8 @@
+**/*/.terraform
+.aws
+.aws_account_id
+.key
 bin
+out
+terraform/*.tf
+venv
